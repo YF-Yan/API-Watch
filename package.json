@@ -1,0 +1,48 @@
+{
+  "name": "api-watch",
+  "version": "1.0.0",
+  "description": "侧边栏 API 余量监视器",
+  "main": "electron/main.js",
+  "author": "API Watch",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win portable"
+  },
+  "dependencies": {
+    "electron-store": "^8.2.0"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.apiwatch.dock",
+    "productName": "API Watch",
+    "copyright": "Copyright © API Watch",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "electron/**/*",
+      "renderer/**/*",
+      "icons/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "artifactName": "API-Watch-${version}-portable.${ext}",
+      "signAndEditExecutable": false
+    },
+    "portable": {
+      "artifactName": "API-Watch-${version}-portable.exe"
+    }
+  }
+}

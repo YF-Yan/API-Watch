@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self'; connect-src 'self' https://api.deepseek.com https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://dashscope.aliyuncs.com https://api.moonshot.cn https://ark.cn-beijing.volces.com" />
+  <title>API Watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="booting">
+  <div class="splash" id="splash" aria-hidden="true">
+    <div class="splash-veil"></div>
+    <div class="splash-core">
+      <div class="splash-line" aria-hidden="true"></div>
+      <div class="splash-mark">
+        <span class="splash-ring"></span>
+        <span class="splash-glyph">AW</span>
+      </div>
+      <div class="splash-copy">
+        <div class="splash-brand">API Watch</div>
+        <div class="splash-tag">余额监视 · 贴边静候</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dock" id="dock" data-side="right">
+    <div class="edge-bar" id="edgeBar" aria-hidden="true"></div>
+    <div class="dock-rail" id="dockRail">
+      <div class="dock-list" id="dockList"></div>
+      <div class="dock-footer">
+        <button class="add-btn" id="addBtn" type="button" title="添加大模型">+</button>
+      </div>
+    </div>
+
+    <div class="balance-panel" id="balancePanel">
+      <div class="balance-card">
+        <div class="row-top">
+          <div class="mini-icon" id="balIcon"></div>
+          <div>
+            <div class="label">余额</div>
+            <div class="name" id="balName">—</div>
+          </div>
+        </div>
+        <div class="amount-wrap">
+          <span class="amount ok" id="balAmount">--</span>
+          <span class="unit" id="balUnit">CNY</span>
+        </div>
+        <div class="meta">
+          <span class="dot" id="balDot"></span>
+          <span id="balMeta">等待同步</span>
+        </div>
+        <div class="panel-actions">
+          <button type="button" id="refreshOne">刷新</button>
+          <button type="button" class="danger" id="removeOne">移除</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-mask" id="modalMask">
+    <div class="modal">
+      <h2>添加大模型</h2>
+      <p class="sub">密钥仅保存在本机（系统加密）</p>
+      <label for="providerSelect">提供商</label>
+      <select id="providerSelect">
+        <option value="deepseek">DeepSeek</option>
+        <option value="openai">OpenAI</option>
+        <option value="anthropic">Claude</option>
+        <option value="gemini">Gemini</option>
+        <option value="qwen">通义千问</option>
+        <option value="moonshot">Kimi</option>
+        <option value="doubao">豆包</option>
+      </select>
+      <label for="apiKeyInput">API Key</label>
+      <input id="apiKeyInput" type="password" placeholder="sk-..." autocomplete="off" />
+      <p class="error" id="formError" hidden></p>
+      <div class="modal-actions">
+        <button type="button" id="cancelAdd">取消</button>
+        <button type="button" class="primary" id="confirmAdd">添加并查询</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
